@@ -1,0 +1,70 @@
+ESTUDI PREVI:
+
+
+1. Explicad para qué sirven y qué operandos admiten las instrucciones:
+
+    paddb -->
+
+    movdqa --> 
+
+    movdqu -->
+
+    emms -->
+    
+
+***********************************************************************************************************************************
+
+2. La propiedad __attribute__ y el atributo aligned sirven para:
+
+    __attribute__ --> permet que e3ls atributs especials s'activin, es a dir, que certs atributs es detecten com a atributs de C 
+                      i no com a variables locals.
+
+    aligned --> indica el alineament que han de tenir les variables al ser guardades.
+
+***********************************************************************************************************************************
+
+3. Programad en ensamblador una versión de la rutina que hay en Procesar.c procurando hacerla lo más rápida posible.
+
+        movl $0, %eax
+        
+
+ 
+***********************************************************************************************************************************
+
+4. Explicad como se puede cargar un valor inmediato en un registro xmm usando la instrucción movdqu.
+
+    guardando un long como variable anteriormente, es decir, de la manera siguiente:
+
+        LC0:
+            .long   1082130432
+            .long   1077936128
+            .long   1073741824
+            .long   1065353216
+
+        .text
+            movaps  LC0(%rip), %xmm0        
+
+***********************************************************************************************************************************
+
+5. Programad en ensamblador una versión SIMD de la rutina que hay en Procesar.c.
+
+
+***********************************************************************************************************************************
+
+6. Escribid un código en ensamblador que a partir de un valor almacenado en un registro averigüe si es multiplo de 16.
+
+        movl 8(%ebp), %eax  # mata
+        movl 12(%ebp), %esi # matb
+        movl 16(%ebp), %ecx # n 
+        imull %ecx, %ecx    # nxn
+        
+        
+        #### tros de multiple de 16 ####
+        
+        movl $16, %ebx
+        idivl %ebx      # eax = eax / 16
+                        # edx = eax % 16
+                        
+        cmpl %edx, $0
+        jne noEsMultiplo
+
