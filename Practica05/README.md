@@ -51,5 +51,97 @@ Esta opción nos dará una salida parecida a la anterior. Como podéis ver las c
 
 Para programar vuestro simulador de cache tenéis que programar 3 secciones del fichero ```MiSimulador.c```:
 
-1. **Estructuras globales** En esta sección tenéis que declarar las estructuras de datos globales necesarias para mantener el estado de la cache. Es necesario que sean globales, ya que la parte principal del simulador es la rutina reference que se ejecuta una vez por referencia y, como ya sabéis, su estado desaparece una vez se ejecuta.
+1. **Estructuras globales** En esta sección tenéis que declarar las estructuras de datos globales necesarias para mantener el estado de la cache. Es necesario que sean globales, ya que la parte principal del simulador es la rutina ```reference``` que se ejecuta una vez por referencia y, como ya sabéis, su estado desaparece una vez se ejecuta.
 
+2. **Inicialización de la cache** La rutina ```init_cache``` se llama antes de pasar cada test para inicializar las estructuras de datos globales necesarias. El objetivo es dejar la cache en un estado inicial correcto (cache vacía).
+
+3. **Simulación de referencias** La simulación de las referencias tenéis que hacerla en la rutina ```reference```. Esta rutina se llama una vez por cada referencia a simular. Sólo es necesario que generéis el valor correcto de las 7 variables locales que ya tenéis declaradas al inicio de la subrutina y que se corresponden básicamente a las columnas de la tabla del trabajo previo (excepto el booleano ```replacement```, que no era necesario en el trabajo previo).
+
+``` c
+
+void reference (unsigned int address)
+{
+    unsigned int byte;
+    unsigned int bloque_m;
+    unsigned int linea_mc;
+    unsigned int via_mc; // esta parámetro sólo se usa en el fichero
+    // MiSimulador2.c para la cache 2 asociativa
+    unsigned int tag;
+    unsigned int miss; // booleano que indica si es miss
+    unsigned int replacement; // booleano que indica si
+    // se reemplaza una línea válida
+    unsigned int tag_out; // TAG de la línea reemplazada
+
+```
+
+En otras palabras, lo que tenéis que hacer es implementar el algoritmo que, de forma intuitiva, habéis hecho servir manualmente para rellenar la tabla del estudio previo.
+
+Después de vuestro código, la rutina acaba con una llamada a la rutina ```test_and_print``` (o ```test_and_print2``` si es la cache 2 asociativa) para comprobar si los valores de las variables son correctos e imprimirlos por pantalla en caso de tener la opción ```v``` activada.
+
+### Estudio Previo:
+ 
+1. Rellenad la tabla de la hoja de respuestas indicando para cada referencia de la secuencia de referencias la información siguiente (en hexadecimal) para el caso de la cache directa:
+
+* el byte de la línea a que se accede (byte)
+* el bloque de memoria (bloque M)
+* la línea de memoria cache donde se mapeará la referencia (línea MC)
+* la etiqueta (TAG) que se guardará de esta referencia 
+* si el acceso es HIT o MISS,
+* y en caso de que se reemplace una líınea válida, el TAG de la línea reemplazada (TAG out)
+
+2. Rellenad la tabla de la hoja de respuestas indicando para cada referencia de la secuencia de referencias la información siguiente (en hexadecimal) para el caso de la cache 2 asociativa con reemplazo LRU:
+
+* el byte de la línea a que se accede (byte)
+* el bloque de memoria (bloque M)
+* el conjunto de memoria cache donde se mapeará la referencia (conj MC)
+* la vía de memoria cache donde se mapeará la referencia (VIA)
+* la etiqueta (TAG) que se guardará de esta referencia
+* si el acceso es HIT o MISS,
+* y en caso de que se reemplace una línea válida, el TAG de la línea reemplazada (TAG out)
+
+Suponed que el primer acceso en fallo a un determinado conjunto de cache siempre se guarda en la via 0.
+
+3. Dado el siguiente código en C:
+
+``` c
+
+int vector[1024*10];
+
+for (i=0; i<10240; i++)
+    total = vector[i] + i;
+
+```
+
+Calculad cuantos aciertos y fallos en la cache directa obtendremos al ejecutarlo suponiendo que las variables ```i``` y ```total``` se almacenan en registros y que la dirección de inicio de la variable ```vector``` es 0x00eca100.
+
+4. Repetid el cálculo suponiendo que la cache es 2 asociativa con reemplazo LRU.
+
+5. Dado el siguiente código en C:
+
+``` c
+
+int vector[1024*10];
+int vector2[1024*10];
+
+for (i=0; i<10000; i++)
+    total = vector[i] + vector2[i] + i;
+
+```
+
+Calculad cuantos aciertos y fallos en la cache directa obtendremos al ejecutarlo suponiendo que las variables ```i``` y ```total``` se almacenan en registros y que la dirección de inicio de la variable ```vector``` es 0x00eca100.
+
+6. Repetid el cálculo suponiendo que la cache es 2 asociativa con reemplazo LRU.
+
+### Trabajo a realizar durante la Práctica:
+
+1. Programad una primera versión del simulador de cache directa en el fichero ```MiSimulador.c```.
+
+2. Programad un simulador de la cache 2 asociativa con reemplazo LRU en el fichero ```MiSimulador2.c``` y probadlo con el programa almacenado en el fichero ```CacheSim2.o```. Suponed que el primer acceso en fallo a un determinado bloque de cache siempre se guarda en la via 0. 
+
+3. Medid (usando la opción test 2) cuántas instrucciones ejecuta todo el programa en la primera versión que habéis programado.
+
+4. Medid (usando la opción test 2) cuántas instrucciones ejecuta todo el programa en la segunda versión que habéis programado.
+
+5. Calculad el número de aciertos y fallos de cache que se obtienen en el ```test 2``` con la cache directa.
+
+6. Calculad el número de aciertos y fallos de cache que se obtienen en el ```test 2``` con la cache 2 asociativa.
