@@ -4,7 +4,7 @@
 
 El objetivo de esta sesión es recordar conceptos de memoria cache vistos en EC. Para hacerlo programaréis un simulador de cache básico que simule dos caches de lectura.
 
-### Conocimientos Previos
+### Características de la memoria cache
 
 En esta sesión programaremos una memoria cache con las siguientes caractarísticas:
 
