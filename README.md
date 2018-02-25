@@ -20,4 +20,4 @@ En este repositorio podeis encontrar las prácticas de la assignatura de Arquite
 
 [Practica 10 - Instrucciones SIMD](https://github.com/carlotacb/Labs-AC/tree/master/Practica10)
 
-[Practica per l'examen](https://github.com/carlotacb/Labs-AC/tree/master/practicaexamn)
+[Práctica para el exámen](https://github.com/carlotacb/Labs-AC/tree/master/practicaexamn)
