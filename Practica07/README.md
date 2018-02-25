@@ -56,4 +56,4 @@ for (i=0; i<1000; i++) 			InitCache(71); 					// Inicializar Cache #71
 
 En este código, el número que se pasa como parámetro a la función ``InitCache`` indica el tipo de cache que se usará para hacer las mediciones (hay muchas caches diferentes programadas con distintos tamaños de cache, tamaños de línea, asociatividad, políticas de escritura, etc., por lo que los resultados del experimento dependerán del parámetro que se pase a esta función).
 
-** Ver PDF para el trabajo a realizar en la práctica **
+**Ver PDF para el trabajo a realizar en la práctica**
