@@ -71,7 +71,7 @@ void reference (unsigned int address, unsigned int LE) {
     unsigned int esc_mp; // booleano que indica si se escribe en MP
     unsigned int mida_esc_mp;
     unsigned int replacement; // booleano que indica si se reemplaza
-    // una l´ınea v´alida
+                              // una línea válida
     unsigned int tag_out; // TAG de la línea reemplazada
 
 ```
@@ -79,3 +79,15 @@ void reference (unsigned int address, unsigned int LE) {
 En otras palabras, lo que tenéis que hacer es implementar el algoritmo que, de forma intuitiva, habéis hecho servir manualmente para rellenar la tabla del estudio previo. Después de vuestro código, la rutina acaba con una llamada a la rutina ```test_and_print``` para comprobar si los valores de las variables son correctos e imprimirlos por pantalla en caso de tener la opción ```v``` activada.
 
 4. **Impresión de resultados** Si tenéis que imprimir algún resultado final, la rutina final se ejecuta una vez al finalizar el programa.
+
+
+### Trabajo a realizar durante la Práctica
+
+1. Programad una versión del simulador de cache de lectura/escritura con política Write Through + Write NO Allocate y comprobad su correcto funcionamiento. Cuando funcione entregad el fichero ``MiSimulador.c`` en el Racó de la asignatura.
+
+2. Implementad también un simulador con el mismo funcionamiento pero con política de escritura Copy Back + Write Allocate en el fichero ``MiSimulador2.c``. Para comprobar su funcionamiento utilizad el fichero ``CacheSimCB.o``. Cuando funcione entregad el fichero ``MiSimulador2.c`` en el Racó de la asignatura.
+
+3. Modificad vuestros simuladores de cache para contar cuántos accesos aciertan y fallan en cache en una ejecución del programa. Podéis imprimir el resultado poniendo el código en la rutina final. Averiguad qué política de escritura es mejor para los accesos que ejecuta el ``test 2``.
+
+4. Recordad entregar los ficheros ``MiSimulador.c`` y ``MiSimulador2.c`` en el Racó de la asignatura. Debéis entregar sólo los dos ficheros fuentes, sin comprimir ni cambiarles el nombre, y sólo una versión por pareja de laboratorio (es indistinto que miembro de
+la pareja entregue).
