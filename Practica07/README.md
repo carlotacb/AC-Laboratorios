@@ -36,22 +36,22 @@ Sin embargo, cuando se utilizan medidas de tiempo, los resultados obtenidos suel
 
 En nuestro caso, para evitar las variaciones propias de los sistemas con varios procesadores, no vamos a utilizar ninguna de estas posibilidades. Vamos a utilizar un simulador, que para un programa determinado nos dirá cuántos fallos de cache se producen. Un ejemplo de cómo usar el simulador podría ser el siguiente código:
 
-```
+``` c
 // 1) CODIGO A EVALUAR: 		// 1) CODIGO EVALUADOR:
 
-sum = 0; 						InitCache(137); 				// Inicializar Cache #137
+sum = 0; 				InitCache(137); 				// Inicializar Cache #137
 for (i=0; i<1000; i++) 			for (i=0; i<1000; i++)
-	sum = sum + v[i] 				Referencia(&v[i]); 			// Evaluar acceso v[i]
-								misses = Fallos(); 				// Obtener los fallos de cache
+	sum = sum + v[i] 			Referencia(&v[i]); 			// Evaluar acceso v[i]
+					misses = Fallos(); 				// Obtener los fallos de cache
 
 // 2) CODIGO A EVALUAR: 		// 2) CODIGO EVALUADOR:
 
 for (i=0; i<1000; i++) 			InitCache(71); 					// Inicializar Cache #71
-	v[i] = v[i] + 44 			for (i=0; i<1000; i++) {
-									Referencia(&v[i]); 			// Evaluar acceso lect v[i]
-									Referencia(&v[i]); 			// Evaluar acceso escr v[i]
-								}
-								misses = Fallos(); 				// Obtener los fallos de cache
+	v[i] = v[i] + 44 		for (i=0; i<1000; i++) {
+						Referencia(&v[i]); 			// Evaluar acceso lect v[i]
+						Referencia(&v[i]); 			// Evaluar acceso escr v[i]
+					}
+					misses = Fallos(); 				// Obtener los fallos de cache
 ```
 
 En este código, el número que se pasa como parámetro a la función ``InitCache`` indica el tipo de cache que se usará para hacer las mediciones (hay muchas caches diferentes programadas con distintos tamaños de cache, tamaños de línea, asociatividad, políticas de escritura, etc., por lo que los resultados del experimento dependerán del parámetro que se pase a esta función).
