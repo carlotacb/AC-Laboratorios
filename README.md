@@ -1,6 +1,6 @@
-# LABORATORIOS AC:
+# LABORATORIOS AC
 
-En este repositorio podeis encontrar las prácticas de la assignatura de Arquitectura de Computadores de la Facultad de Informática de Barcelona.
+En este repositorio podeis encontrar las prácticas de la assignatura de Arquitectura de Computadores de la Facultad de Informática de Barcelona realizadas el quatrimestre de primavera de 2016/2017.
 
 [Practica 02 - Uso del debugger](https://github.com/carlotacb/Labs-AC/tree/master/Practica02)   (Esta practica no tiene las respuestas)
 
