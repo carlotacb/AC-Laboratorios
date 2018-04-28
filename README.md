@@ -1,6 +1,6 @@
 # LABORATORIOS AC
 
-En este repositorio podeis encontrar las prácticas de la assignatura de Arquitectura de Computadores de la Facultad de Informática de Barcelona realizadas el quatrimestre de primavera de 2016/2017.
+En este repositorio podeis encontrar las prácticas de la assignatura de [Arquitectura de Computadores](https://www.fib.upc.edu/ca/estudis/graus/grau-en-enginyeria-informatica/pla-destudis/assignatures/AC) de la [Facultad de Informática de Barcelona](https://www.fib.upc.edu/) en la [UPC](http://www.upc.edu/ca) realizadas el quatrimestre de primavera del 2016.
 
 [Practica 02 - Uso del debugger](https://github.com/carlotacb/Labs-AC/tree/master/Practica02)   (Esta practica no tiene las respuestas)
 
@@ -21,3 +21,5 @@ En este repositorio podeis encontrar las prácticas de la assignatura de Arquite
 [Practica 10 - Instrucciones SIMD](https://github.com/carlotacb/Labs-AC/tree/master/Practica10)
 
 [Práctica para el exámen](https://github.com/carlotacb/Labs-AC/tree/master/practicaexamn)
+
+**La nota del exámen fue de 10, asi como las ultimas prácticas. Las 4 primeras prácticas no estan del todo perfectas**
